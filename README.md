@@ -1,14 +1,11 @@
-# hypescript ![npm](https://img.shields.io/npm/v/hypescript) [![install size](https://packagephobia.com/badge?p=hypescript)](https://packagephobia.com/result?p=hypescript)
+# hyposcript ![npm](https://img.shields.io/npm/v/hyposcript) [![install size](https://packagephobia.com/badge?p=hyposcript)](https://packagephobia.com/result?p=hyposcript)
 
 Tiny hyperscript made for server rendering.
-
-> Looking for [hyperscript](https://github.com/hyperhype/hyperscript)? This
-> project is inspired by their incredible work, but is unaffiliated.
 
 ## Usage
 
 ```js
-const { h } = require('hypescript')
+const { h } = require('hyposcript')
 
 h('button', { class: 'btn' }, 'Click me!')
 
