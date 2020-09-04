@@ -1,0 +1,40 @@
+{
+  "name": "hypescript",
+  "version": "0.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.es.min.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "node test.js",
+    "test:watch": "nodemon test.js",
+    "format": "prettier-standard './**/*.js' --format"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "prettier-standard --format --staged"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/sure-thing/hypescript.git"
+  },
+  "author": "estrattonbailey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sure-thing/hypescript/issues"
+  },
+  "homepage": "https://github.com/sure-thing/hypescript#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/register": "^7.11.5",
+    "baretest": "^2.0.0",
+    "husky": "^4.2.5",
+    "nodemon": "^2.0.4",
+    "prettier-standard": "^16.4.1"
+  }
+}
