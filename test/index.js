@@ -76,6 +76,15 @@ module.exports = (test, assert) => {
     assert(html === `<input autocomplete="false" />`)
   })
 
+  test('h - children & children', async () => {
+    const html = (
+      <div children={[]}>
+        <span />
+      </div>
+    )
+    assert(html === `<div><span></span></div>`)
+  })
+
   test('h - array', async () => {
     const html = (
       <div>

@@ -35,11 +35,9 @@ function h (t, props, ...children) {
 
   const p = props || {}
   const c = []
-    .concat(p.children || children)
+    .concat(children || p.children)
     .flat(2)
     .filter(Boolean)
-
-  // console.log({ t, p, c })
 
   if (!!t.call) return t({ ...props, children: c })
 
@@ -47,8 +45,11 @@ function h (t, props, ...children) {
     .filter(k => k !== 'children')
     .map(k => {
       let v = p[k]
+
+      // custom handling
       if (k === 'style' && typeof v === 'object') v = styleObjectToString(v)
       if (typeof v === 'boolean') return `${aliases[k] || k}`
+
       return `${aliases[k] || k}="${v}"`
     })
     .join(' ')
