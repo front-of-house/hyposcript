@@ -76,6 +76,32 @@ module.exports = (test, assert) => {
     assert(html === `<input autocomplete="false" />`)
   })
 
+  test('h - array', async () => {
+    const html = (
+      <div>
+        {true && [
+          <span />,
+          <span />
+        ]}
+      </div>
+    )
+    assert(html === `<div><span></span><span></span></div>`)
+  })
+
+  test('h - fragment', async () => {
+    const html = (
+      <div>
+        {true && (
+          <>
+            <span />
+            <span />
+          </>
+        )}
+      </div>
+    )
+    assert(html === `<div><span></span><span></span></div>`)
+  })
+
   /*
    * Hyperscript specific
    */

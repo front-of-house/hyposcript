@@ -31,6 +31,8 @@ function styleObjectToString (style) {
 }
 
 function h (t, props, ...children) {
+  if (t.children) return t.children.join('')
+
   const p = props || {}
   const c = []
     .concat(p.children || children)

@@ -5,13 +5,14 @@ require('@babel/register')({
     [
       '@babel/preset-react',
       {
-        pragma: 'h'
+        pragma: 'h',
+        pragmaFrag: 'h',
       }
     ]
   ]
 })
 
-const test = require('baretest')('presta')
+const test = require('baretest')('hypobox')
 const assert = require('assert')
 
 require('./test/index.js')(test, assert)
