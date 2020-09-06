@@ -4,13 +4,11 @@
   "description": "",
   "main": "index.js",
   "types": "index.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "test": "node test.js",
     "test:watch": "nodemon test.js",
-    "format": "prettier-standard './**/*.js' --format"
+    "format": "prettier-standard './**/*.js' --format",
+    "bench": "node bench"
   },
   "husky": {
     "hooks": {
