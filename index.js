@@ -39,7 +39,7 @@ function h (t, props, ...children) {
     .flat(2)
     .filter(Boolean)
 
-  if (!!t.call) return t({ ...props, children: c })
+  if (t.call) return t({ ...props, children: c })
 
   const attr = Object.keys(p)
     .filter(k => k !== 'children')
