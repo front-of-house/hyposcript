@@ -5,14 +5,16 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "test": "node test.js",
-    "test:watch": "nodemon test.js",
-    "format": "prettier-standard './**/*.js' --format",
-    "bench": "node bench"
+    "test": "node test",
+    "test:watch": "nodemon test",
+    "format": "prettier-standard --format",
+    "lint": "prettier-standard --lint",
+    "bench": "cd bench && npm i && node index.js"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "prettier-standard --format --staged"
+      "pre-commit": "prettier-standard --format --staged",
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
   "repository": {
@@ -33,5 +35,10 @@
     "husky": "^4.2.5",
     "nodemon": "^2.0.4",
     "prettier-standard": "^16.4.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
