@@ -118,4 +118,11 @@ module.exports = (test, assert) => {
     const html = h('div', null, [h('h1', {}, 'foo'), h('h1', {}, 'bar')])
     assert(html === `<div><h1>foo</h1><h1>bar</h1></div>`)
   })
+
+  test('h - children as props', async () => {
+    const html = h('div', {
+      children: [h('h1', {}, 'foo'), h('h1', {}, 'bar')]
+    })
+    assert(html === `<div><h1>foo</h1><h1>bar</h1></div>`)
+  })
 }

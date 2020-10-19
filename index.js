@@ -35,11 +35,11 @@ function h (t, props, ...children) {
 
   const p = props || {}
   const c = []
-    .concat(children || p.children)
+    .concat(children.length ? children : p.children || [])
     .flat(2)
     .filter(Boolean)
 
-  if (t.call) return t({ ...props, children: c })
+  if (!!t.call) return t({ ...props, children: c })
 
   const attr = Object.keys(p)
     .filter(k => k !== 'children')
@@ -55,6 +55,8 @@ function h (t, props, ...children) {
     .join(' ')
   const a = attr ? ' ' + attr : ''
   const v = voids.indexOf(t) > -1
+
+  // console.log(t, a, c)
 
   return v ? `<${t}${a} />` : `<${t}${a}>${c.join('')}</${t}>`
 }

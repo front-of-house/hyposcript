@@ -32,9 +32,12 @@
     "@babel/preset-react": "^7.10.4",
     "@babel/register": "^7.11.5",
     "baretest": "^2.0.0",
+    "commitizen": "^4.2.1",
+    "cz-conventional-changelog": "^3.3.0",
     "husky": "^4.2.5",
     "nodemon": "^2.0.4",
-    "prettier-standard": "^16.4.1"
+    "prettier-standard": "^16.4.1",
+    "semantic-release": "^17.2.1"
   },
   "config": {
     "commitizen": {
