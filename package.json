@@ -13,7 +13,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "prettier-standard --format --staged",
+      "pre-commit": "prettier-standard --lint && prettier-standard --format --staged",
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
     }
   },
