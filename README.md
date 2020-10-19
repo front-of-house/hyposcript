@@ -1,4 +1,6 @@
-# hyposcript ![npm](https://img.shields.io/npm/v/hyposcript)
+![hyposcript](https://user-images.githubusercontent.com/4732330/96394691-407b9f00-1188-11eb-92c0-e05e48da99e8.png)
+
+<br/>
 
 Hyper minimal hyperscript for server rendering.
 
