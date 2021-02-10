@@ -21,14 +21,14 @@ const voids = [
 ]
 
 function styleObjectToString (style) {
-  return Object.keys(style)
-    .map(
-      p =>
-        `${p.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()}:${
-          style[p]
-        }`
-    )
-    .join(';')
+  let s = ''
+
+  for (const p in style) {
+    const k = p.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()
+    s += k + ':' + style[p] + ';'
+  }
+
+  return s
 }
 
 function h (t, props, ...children) {

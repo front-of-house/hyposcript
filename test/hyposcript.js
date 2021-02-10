@@ -58,8 +58,8 @@ module.exports = (test, assert) => {
   })
 
   test('h - style', async () => {
-    const obj = <div style={{ color: 'red' }}>foo</div>
-    assert(obj === `<div style="color:red">foo</div>`)
+    const obj = <div style={{ color: 'red', fontSize: '2rem' }}>foo</div>
+    assert(obj === `<div style="color:red;font-size:2rem;">foo</div>`)
   })
 
   test('h - data attr', async () => {
