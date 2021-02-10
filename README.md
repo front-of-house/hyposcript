@@ -48,20 +48,20 @@ link this:
 
 ### Benchmarks
 
-Since hyposcript is basically just concatenating strings, benchmark comparisons
-with hyperscript or React are not fair. Even so, there's a simple benchmark
-here to general reference. These were run on an 2.4 GHz 8-Core Intel Core i9
+Since `hyposcript` is basically just concatenating strings, benchmark
+comparisons with `hyperscript` or `react` are not really fair. And though
+`vhtml` and `hyposcript` are essentially the same, `hyposcript` does not escape
+HTML strings for you (be safe out there). Even so, there's a simple benchmark
+here for general reference. These were run on an 2.4 GHz 8-Core Intel Core i9
 MacBook Pro.
 
-As you can see, if you're targeting a server environment, hyposcript is a good
-option.
-
 ```
-react            x 44,897 ops/sec ±0.96% (93 runs sampled)
-hyperscript      x 20,925 ops/sec ±0.57% (93 runs sampled)
-hyposcript       x 147,761 ops/sec ±0.86% (92 runs sampled)
+hyperscript      x 27,932 ops/sec ±2.08% (89 runs sampled)
+react            x 43,261 ops/sec ±0.63% (94 runs sampled)
+vhtml            x 168,688 ops/sec ±0.67% (91 runs sampled)
+hyposcript       x 444,603 ops/sec ±1.07% (89 runs sampled)
 ```
 
 ### License
 
-MIT License © [Eric Bailey](https://estrattonbailey.com)
+MIT License © [Sure Thing](https://github.com/sure-thing)
