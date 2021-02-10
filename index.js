@@ -34,12 +34,11 @@ function styleObjectToString (style) {
 function h (t, props, ...children) {
   if (t.children) return t.children.join('')
 
-  const p = props || {}
+  props = props || {}
 
   const c = []
 
-  // if props.children, prioritize that
-  children = children.length ? children : p.children || []
+  children = children.length ? children : props.children || []
 
   while (children.length) {
     const child = children.shift()
@@ -48,22 +47,34 @@ function h (t, props, ...children) {
 
   if (t.call) return t({ ...props, children: c })
 
-  const attr = Object.keys(p)
-    .filter(k => k !== 'children')
-    .map(k => {
-      let v = p[k]
+  let attrs = ''
 
-      // custom handling
-      if (k === 'style' && typeof v === 'object') v = styleObjectToString(v)
-      if (typeof v === 'boolean') return `${aliases[k] || k}`
+  for (const k in props) {
+    if (k === 'children') continue
 
-      return `${aliases[k] || k}="${v}"`
-    })
-    .join(' ')
-  const a = attr ? ' ' + attr : ''
+    let v = props[k]
+    const key = aliases[k] || k
+
+    if (typeof v === 'boolean') {
+      attrs += `${key}`
+      continue
+    }
+
+    if (k === 'style') v = styleObjectToString(v)
+
+    attrs += `${key}="${v}"`
+  }
+
+  const a = attrs ? ' ' + attrs : ''
   const v = voids.indexOf(t) > -1
 
-  return v ? `<${t}${a} />` : `<${t}${a}>${c.join('')}</${t}>`
+  let childs = ''
+
+  while (c.length) {
+    childs += c.shift()
+  }
+
+  return v ? '<' + t + a + ' />' : '<' + t + a + '>' + childs + '</' + t + '>'
 }
 
 module.exports = { h, styleObjectToString }

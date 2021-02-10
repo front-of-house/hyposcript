@@ -24,6 +24,8 @@ module.exports = (test, assert) => {
   test('h - aliases', async () => {
     const html = <div className='test'>foo</div>
     assert(html === `<div class="test">foo</div>`)
+    const htmlFor = <label htmlFor='test'>foo</label>
+    assert(htmlFor === `<label for="test">foo</label>`)
   })
 
   test('h - multi children', async () => {
@@ -56,8 +58,6 @@ module.exports = (test, assert) => {
   })
 
   test('h - style', async () => {
-    const str = <div style='color: red'>foo</div>
-    assert(str === `<div style="color: red">foo</div>`)
     const obj = <div style={{ color: 'red' }}>foo</div>
     assert(obj === `<div style="color:red">foo</div>`)
   })
