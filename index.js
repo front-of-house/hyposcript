@@ -1,5 +1,6 @@
 const aliases = {
-  className: 'class'
+  className: 'class',
+  htmlFor: 'for'
 }
 
 const voids = [
@@ -34,10 +35,16 @@ function h (t, props, ...children) {
   if (t.children) return t.children.join('')
 
   const p = props || {}
+
   const c = []
-    .concat(children.length ? children : p.children || [])
-    .flat(2)
-    .filter(Boolean)
+
+  // if props.children, prioritize that
+  children = children.length ? children : p.children || []
+
+  while (children.length) {
+    const child = children.shift()
+    child.pop ? children.push(...child) : c.push(child)
+  }
 
   if (t.call) return t({ ...props, children: c })
 
@@ -55,8 +62,6 @@ function h (t, props, ...children) {
     .join(' ')
   const a = attr ? ' ' + attr : ''
   const v = voids.indexOf(t) > -1
-
-  // console.log(t, a, c)
 
   return v ? `<${t}${a} />` : `<${t}${a}>${c.join('')}</${t}>`
 }
