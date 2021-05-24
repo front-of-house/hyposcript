@@ -105,6 +105,16 @@ module.exports = (test, assert) => {
     assert(html === `<div><span></span><span></span></div>`)
   })
 
+  test('can return null', () => {
+    const Comp = () => null
+    const html = (
+      <div>
+        <Comp />
+      </div>
+    )
+    assert(html === '<div></div>')
+  })
+
   /*
    * Hyperscript specific
    */

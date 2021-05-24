@@ -42,6 +42,7 @@ function h (t, props, ...children) {
 
   while (children.length) {
     const child = children.shift()
+    if (!child) continue
     child.pop ? children.push(...child) : c.push(child)
   }
 
