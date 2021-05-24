@@ -42,8 +42,9 @@ function h (t, props, ...children) {
 
   while (children.length) {
     const child = children.shift()
-    if (!child) continue
-    child.pop ? children.push(...child) : c.push(child)
+    if (child) {
+      child.pop ? children.push(...child) : c.push(child)
+    }
   }
 
   if (t.call) return t({ ...props, children: c })

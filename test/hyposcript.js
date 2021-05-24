@@ -105,6 +105,12 @@ module.exports = (test, assert) => {
     assert(html === `<div><span></span><span></span></div>`)
   })
 
+  test('handles falsy coercion', () => {
+    const val = undefined
+    const html = <div>{val && <h1>{val}</h1>}</div>
+    assert(!/h1/.test(html))
+  })
+
   test('can return null', () => {
     const Comp = () => null
     const html = (
@@ -127,6 +133,21 @@ module.exports = (test, assert) => {
   test('h - array children', async () => {
     const html = h('div', null, [h('h1', {}, 'foo'), h('h1', {}, 'bar')])
     assert(html === `<div><h1>foo</h1><h1>bar</h1></div>`)
+  })
+
+  test('h - array children with falsy values', async () => {
+    const value = undefined
+    const html = h('div', null, [
+      h('h1', {}, 'foo'),
+      value && h('h2', {}, value),
+      false && h('h3', {}, 'baz')
+    ])
+    assert(html === `<div><h1>foo</h1></div>`)
+  })
+
+  test('h - undefined children', async () => {
+    const html = h('div', {}, [h('h1', {}, 'hello'), undefined])
+    assert(html === `<div><h1>hello</h1></div>`)
   })
 
   test('h - children as props', async () => {
