@@ -5,16 +5,16 @@ const hyperscript = require('hyperscript')
 const vhtml = require('vhtml')
 const hyposcript = require('../')
 
-function bench (name) {
+function bench(name) {
   console.log(`\n# ${name}`)
   const suite = new Suite()
   const previous = suite.add.bind(suite)
-  suite.on('cycle', e => console.log('  ' + e.target))
+  suite.on('cycle', (e) => console.log('  ' + e.target))
   suite.add = (name, runner) => previous(name.padEnd(16), runner)
   return suite
 }
 
-function createApp (h) {
+function createApp(h) {
   return h(
     'div',
     { className: 'foo' },
