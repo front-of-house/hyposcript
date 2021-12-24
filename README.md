@@ -1,6 +1,6 @@
-![hyposcript](https://user-images.githubusercontent.com/4732330/96394691-407b9f00-1188-11eb-92c0-e05e48da99e8.png)
+# hyposcript
 
-<br/>
+[![npm version](https://img.shields.io/npm/v/hyposcript?style=flat&colorA=4488FF&colorB=4488FF)](https://www.npmjs.com/package/hyposcript) [![test coverage](https://img.shields.io/coveralls/github/sure-thing/hyposcript?style=flat&colorA=223355&colorB=223355)](https://coveralls.io/github/sure-thing/hyposcript?branch=main) [![npm bundle size](https://badgen.net/bundlephobia/min/hyposcript?color=223355&labelColor=223355)](https://bundlephobia.com/result?p=hyposcript)
 
 Hyper minimal hyperscript for server rendering.
 

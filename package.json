@@ -2,20 +2,15 @@
   "name": "hyposcript",
   "version": "0.3.0",
   "description": "",
-  "main": "index.js",
-  "types": "index.d.ts",
+  "main": "./index.js",
+  "types": "./index.d.ts",
   "scripts": {
-    "test": "node test",
-    "test:watch": "nodemon test",
-    "format": "prettier-standard --format",
-    "lint": "prettier-standard --lint",
-    "bench": "cd bench && npm i && node index.js"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "prettier-standard --lint && prettier-standard --format --staged",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook || true"
-    }
+    "prepare": "is-ci || pnpx husky install",
+    "test": "c8 node -r esbuild-register lib/__tests__/index.tsx",
+    "build": "node scripts/build && tsc --emitDeclarationOnly",
+    "typecheck": "tsc --noEmit",
+    "lint": "prettier --check .",
+    "format": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -28,20 +23,22 @@
   },
   "homepage": "https://github.com/sure-thing/hyposcript#readme",
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-react": "^7.10.4",
-    "@babel/register": "^7.11.5",
+    "@commitlint/cli": "^15.0.0",
+    "@commitlint/config-conventional": "^15.0.0",
+    "@semantic-release/git": "^10.0.1",
     "baretest": "^2.0.0",
-    "commitizen": "^4.2.1",
-    "cz-conventional-changelog": "^3.3.0",
-    "husky": "^4.2.5",
-    "nodemon": "^2.0.4",
-    "prettier-standard": "^16.4.1",
-    "semantic-release": "^17.2.1"
+    "c8": "^7.10.0",
+    "commitlint": "^15.0.0",
+    "esbuild": "^0.14.7",
+    "esbuild-register": "^3.2.1",
+    "husky": "^7.0.4",
+    "is-ci": "^3.0.1",
+    "prettier": "^2.5.1",
+    "semantic-release": "^18.0.1",
+    "typescript": "^4.5.4",
+    "uvu": "^0.5.2"
   },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
+  "dependencies": {
+    "csstype": "^3.0.10"
   }
 }

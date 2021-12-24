@@ -1,0 +1,9 @@
+/bench
+/lib
+.c8rc
+.gitignore
+.prettierignore
+.prettierrc
+commitlint.config.js
+release.config.js
+tsconfig.json

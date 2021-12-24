@@ -1,0 +1,11 @@
+.DS_Store
+*.map
+node_modules/
+dist
+.nyc_output
+.pnpm*
+coverage
+
+# built files
+index.js
+index.d.ts

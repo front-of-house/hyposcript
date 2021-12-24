@@ -1,2 +1,14 @@
 node_modules
-bench
+demo
+fixtures
+test/fixtures
+dist
+build
+.nyc_output
+coverage
+pnpm-lock.yaml
+.pnpm*
+.changeset
+
+index.js
+index.d.ts
