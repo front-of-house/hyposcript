@@ -2,10 +2,14 @@ import { Properties as CSSProperties } from 'csstype'
 
 type CSSPropertyNames = keyof CSSProperties
 
-type Tag = Function | { children: HyposcriptNode[] } | keyof HTMLElementTagNameMap | string
-export type HyposcriptNode = string
+export type Element = Function | { children: Child[] } | keyof HTMLElementTagNameMap | string
+export type Props = {
+  style?: { [property in CSSPropertyNames]: string | number }
+  [attribute: string]: any
+}
+export type Child = string
 export type PropsWithChildren<T> = T & {
-  children?: HyposcriptNode
+  children?: Child | Child[]
 }
 
 const aliases = {
@@ -41,7 +45,7 @@ export function styleObjectToString(style: { [property in CSSPropertyNames]: str
   return s
 }
 
-export function h(tag: Tag, props: Record<string, any>, ...children: HyposcriptNode[] | HyposcriptNode[][]) {
+export function h(tag: Element, props: Props, ...children: Child[] | Child[][]) {
   // multiple children as immediate children
   if (typeof tag === 'object' && tag.children) return tag.children.join('')
 
