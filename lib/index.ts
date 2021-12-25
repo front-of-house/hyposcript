@@ -7,7 +7,7 @@ export type Props = {
   style?: { [property in CSSPropertyNames]: string | number }
   [attribute: string]: any
 }
-export type Child = string
+export type Child = string | boolean | null
 export type PropsWithChildren<T> = T & {
   children?: Child | Child[]
 }
@@ -45,7 +45,7 @@ export function styleObjectToString(style: { [property in CSSPropertyNames]: str
   return s
 }
 
-export function h(tag: Element, props: Props, ...children: Child[] | Child[][]) {
+export function h(tag: Element, props: Props, ...children: Child[] | Child[][]): string {
   // multiple children as immediate children
   if (typeof tag === 'object' && tag.children) return tag.children.join('')
 
