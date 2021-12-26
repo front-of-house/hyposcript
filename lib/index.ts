@@ -4,7 +4,7 @@ type CSSPropertyNames = keyof CSSProperties
 
 export type Element = Function | { children: Child[] } | keyof HTMLElementTagNameMap | string
 export type Props = {
-  style?: { [property in CSSPropertyNames]: string | number }
+  style?: { [property in CSSPropertyNames]?: string | number }
   [attribute: string]: any
 }
 export type Child = string | boolean | null
