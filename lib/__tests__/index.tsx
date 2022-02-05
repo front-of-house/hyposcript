@@ -78,6 +78,46 @@ test('h - non-boolean boolean attr + self-closing', async () => {
   assert.equal(html, `<input autocomplete="false" />`)
 })
 
+test('h - null attr', async () => {
+  const html = <div class={null}>foo</div>
+  assert.equal(html, `<div>foo</div>`)
+})
+
+test('h - undefined attr', async () => {
+  const html = <div class={undefined}>foo</div>
+  assert.equal(html, `<div>foo</div>`)
+})
+
+test('h - null style', async () => {
+  const html = <div style={null}>foo</div>
+  assert.equal(html, `<div>foo</div>`)
+})
+
+test('h - undefined style', async () => {
+  const html = <div style={undefined}>foo</div>
+  assert.equal(html, `<div>foo</div>`)
+})
+
+test('h - null prop in style', async () => {
+  const html = <div style={{ color: 'red', fontSize: null }}>foo</div>
+  assert.equal(html, `<div style="color:red;">foo</div>`)
+})
+
+test('h - undefined prop in style', async () => {
+  const html = <div style={{ color: 'red', fontSize: undefined }}>foo</div>
+  assert.equal(html, `<div style="color:red;">foo</div>`)
+})
+
+test('h - falsy prop in style', async () => {
+  const html = <div style={{ color: 'red', fontSize: false }}>foo</div>
+  assert.equal(html, `<div style="color:red;">foo</div>`)
+})
+
+test('h - 0 prop in style', async () => {
+  const html = <div style={{ color: 'red', fontSize: 0 }}>foo</div>
+  assert.equal(html, `<div style="color:red;font-size:0;">foo</div>`)
+})
+
 test('h - children & children', async () => {
   const html = (
     <div children={[]}>

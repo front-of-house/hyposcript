@@ -39,7 +39,8 @@ export function styleObjectToString(style: { [property in CSSPropertyNames]: str
 
   for (const p in style) {
     const k = p.replace(/([a-z0-9]|(?=[A-Z]))([A-Z])/g, '$1-$2').toLowerCase()
-    s += k + ':' + style[p] + ';'
+    const v = style[p]
+    if (v || typeof v === 'number') s += k + ':' + style[p] + ';'
   }
 
   return s
@@ -76,9 +77,10 @@ export function h(tag: Element, props: Props, ...children: Child[] | Child[][]):
       attrs += `${key}`
       continue
     }
+
     if (k === 'style') value = styleObjectToString(value)
 
-    attrs += `${key}="${value}"`
+    if (value) attrs += `${key}="${value}"`
   }
 
   const a = attrs ? ' ' + attrs : ''
