@@ -73,6 +73,11 @@ test('h - boolean attr', async () => {
   assert.equal(html, `<button disabled>foo</button>`)
 })
 
+test('h - multiple boolean attrs', async () => {
+  const html = <video loop muted playsinline src="foo.mp4"></video>
+  assert.equal(html, `<video loop muted playsinline src="foo.mp4"></video>`)
+})
+
 test('h - non-boolean boolean attr + self-closing', async () => {
   const html = <input autocomplete="false" />
   assert.equal(html, `<input autocomplete="false" />`)

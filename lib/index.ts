@@ -74,7 +74,7 @@ export function h(tag: Element, props: Props, ...children: Child[] | Child[][]):
     const key = aliases[k] || k
 
     if (typeof value === 'boolean') {
-      attrs += `${key}`
+      attrs += `${key} `
       continue
     }
 
@@ -83,7 +83,7 @@ export function h(tag: Element, props: Props, ...children: Child[] | Child[][]):
     if (value) attrs += `${key}="${value}"`
   }
 
-  const a = attrs ? ' ' + attrs : ''
+  const a = attrs ? ' ' + attrs.trim() : ''
   const v = voids.indexOf(tag as string) > -1
 
   let childs = ''
