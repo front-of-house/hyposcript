@@ -8,6 +8,16 @@ test('h', async () => {
   assert.equal(html, `<div>foo</div>`)
 })
 
+test('h - number as child', async () => {
+  const html = <div>{1}</div>
+  assert.equal(html, `<div>1</div>`)
+})
+
+test('h - boolean as child', async () => {
+  const html = <div>Hello {true}</div>
+  assert.equal(html, `<div>Hello </div>`)
+})
+
 test('h - nested', async () => {
   const html = (
     <div>
