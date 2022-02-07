@@ -7,7 +7,7 @@ export type Props = {
   style?: { [property in CSSPropertyNames]?: string | number }
   [attribute: string]: any
 }
-export type Child = string | boolean | null
+export type Child = string | boolean | number | null
 export type PropsWithChildren<T> = T & {
   children?: Child | Child[]
 }
@@ -58,8 +58,19 @@ export function h(tag: Element, props: Props, ...children: Child[] | Child[][]):
   while (children.length) {
     const child = children.shift()
     if (!child) continue
-    // @ts-expect-error
-    typeof child === 'string' ? c.push(child) : children.push(...child)
+    switch (typeof child) {
+      case 'string':
+        c.push(child)
+        break
+      case 'number':
+        c.push(`${child}`)
+        break
+      case 'boolean':
+        continue
+      default:
+        // @ts-expect-error
+        children.push(...child)
+    }
   }
 
   // needed for JSX
