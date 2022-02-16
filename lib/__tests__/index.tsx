@@ -103,6 +103,16 @@ test('h - undefined attr', async () => {
   assert.equal(html, `<div>foo</div>`)
 })
 
+test('h - empty string attr', async () => {
+  const html = <input value="" />
+  assert.equal(html, `<input value />`)
+})
+
+test('h - 0 as attr', async () => {
+  const html = <input value={0} />
+  assert.equal(html, `<input value="0" />`)
+})
+
 test('h - null style', async () => {
   const html = <div style={null}>foo</div>
   assert.equal(html, `<div>foo</div>`)
