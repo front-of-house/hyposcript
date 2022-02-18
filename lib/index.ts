@@ -84,10 +84,12 @@ export function h(tag: Element, props: Props, ...children: Child[] | Child[][]):
     let value = props[k]
     const key = aliases[k] || k
 
-    if (typeof value === 'boolean') {
+    if (typeof value === 'boolean' || value === '') {
       attrs += `${key} `
       continue
     }
+
+    if (value === 0) value += ''
 
     if (k === 'style') value = styleObjectToString(value)
 
