@@ -1,5 +1,5 @@
 {
-  "include": ["lib/index.ts"],
+  "include": ["lib/index.ts", "jsx.d.ts"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "lib": ["ES5", "dom"],

@@ -1,3 +1,5 @@
+/// <reference path="../jsx.d.ts" />
+
 import { Properties as CSSProperties } from 'csstype'
 
 type CSSPropertyNames = keyof CSSProperties
